@@ -1,0 +1,8 @@
+一、使用root的drop命令
+
+mysql> drop database RUNOOB;
+
+二、使用 mysqladmin 删除数据库
+
+[root@host]# mysqladmin -u root -p drop RUNOOB
+Enter password:******

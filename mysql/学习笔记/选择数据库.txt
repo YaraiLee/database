@@ -1,0 +1,4 @@
+使用use命令
+
+mysql> use RUNOOB;
+Database changed

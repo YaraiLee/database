@@ -1,0 +1,24 @@
+一、删除数据库RUNOOB中的表runoob_tbl
+mysql> use RUNOOB;
+Database changed
+mysql> DROP TABLE runoob_tbl
+
+二、删除表内容
+1.delete from 表名 where 删除条件;
+
+2.清除表内数据，保存表结构，用 truncate。
+truncate table 表名;
+
+三、删除操作总结
+1、当你不再需要该表时， 用 drop;
+
+2、当你仍要保留该表，但要删除所有记录时，用 truncate; 删除表全部数据，保留表结构，立刻释放磁盘空间 ，不管是 Innodb 和 MyISAM;
+
+3、当你要条件删除部分记录时， 用 delete。
+
+4、delete也可删除全部
+delete from 表名;	#删除表全部数据，表结构不变，对于 MyISAM 会立刻释放磁盘空间，InnoDB 不会释放磁盘空间;
+
+5、delete 操作以后，使用 optimize table table_name 会立刻释放磁盘空间，不管是 innodb 还是 myisam;
+
+6、delete from 表以后虽然未释放磁盘空间，但是下次插入数据的时候，仍然可以使用这部分空间。

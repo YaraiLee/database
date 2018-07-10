@@ -1,0 +1,43 @@
+一、知道旧的密码，进行修改
+
+[root@localhost ~]# mysqladmin -u root -p password 新密码
+Enter password:旧密码
+修改完毕！！！
+
+二、忘记密码进行修改
+方法一：修改/etc/my.cnf配置文件
+1)打开 my.cnf 配置文件，找到 [mysqld] ，然后在该行下面添加以下参数
+
+在[mysqld]的段中加上一句：skip-grant-tables
+例如：
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+skip-grant-tables
+保存并且退出。
+
+2)重启mysqld服务
+
+3)无密码登入mysql
+[root@localhost ~]# mysqld_safe --skip-grant-tables & 	#使用mysqld_safe模式启动mysql服务
+[root@localhost ~]# mysql
+
+4)mysql> use mysql;	#选择mysql数据库
+  mysql> update user set password=password('新密码') where user='root'; #更新修改root密码
+  mysql> flush privileges;	#刷新权限
+  mysql> quit;
+
+5)使用新密码登录
+[root@localhost ~]# mysql -uroot -p
+Enter password: 新密码
+或者
+[root@localhost ~]# mysql -uroot -p新密码	#直接进入
+
+6)修改完后注释掉my.conf的修改，重启mysqld服务
+
+方法二：使用mysqld_safe模式命令修改
+1)关闭mysql
+[root@localhost ~]# service mysqld stop
+停止 mysqld：                                              [确定]
+
+2)同方法一的3~5之后操作

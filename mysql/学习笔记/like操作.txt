@@ -1,0 +1,20 @@
+like 匹配/模糊匹配，会与 % 和 _ 结合使用。
+
+'%a'     //以a结尾的数据
+'a%'     //以a开头的数据
+'%a%'    //含有a的数据
+'_a_'    //三位且中间字母是a的
+'_a'     //两位且结尾字母是a的
+'a_'     //两位且开头字母是a的
+
+查询以 java 字段开头的信息。
+
+SELECT * FROM position WHERE name LIKE 'java%';
+
+查询包含 java 字段的信息。
+
+SELECT * FROM position WHERE name LIKE '%java%';
+
+查询以 java 字段结尾的信息。
+
+SELECT * FROM position WHERE name LIKE '%java';

@@ -1,0 +1,15 @@
+1. 	UPDATE table_name SET field1=new-value1, field2=new-value2 [WHERE Clause]
+
+    你可以同时更新一个或多个字段。
+    你可以在 WHERE 子句中指定任何条件。
+    你可以在一个单独表中同时更新数据。
+	
+2.小批量更新数据
+UPDATE mytable 
+    SET myfield = CASE id 
+        WHEN 1 THEN 'value'
+        WHEN 2 THEN 'value'
+        WHEN 3 THEN 'value'
+    END
+WHERE id IN (1,2,3)
+

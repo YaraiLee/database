@@ -1,0 +1,18 @@
+select _column,_column from _table [where Clause] [limit N][offset M]
+
+    select * : 返回所有记录
+    limit N : 返回 N 条记录
+    offset M : 跳过 M 条记录, 默认 M=0, 单独使用似乎不起作用
+    limit N,M : 相当于 offset N limit M , 从第 N 条记录开始, 返回 M 条记录
+
+
+实现分页：
+
+select * from _table limit (page_number-1)*lines_perpage, lines_perpage
+
+或
+
+select * from _table limit lines_perpage offset (page_number-1)*lines_perpage
+
+
+

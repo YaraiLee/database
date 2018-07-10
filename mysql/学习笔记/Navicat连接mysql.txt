@@ -1,0 +1,12 @@
+物理机上不能通过Navicat连接虚拟机上安装的mysql是因为虚拟机上安装的mysql没有授权其他主机连接它
+
+方法一：改表法
+
+mysql>update user set host = '%' where user = 'root'; #默认root用户的host='localhost'
+mysql>select host, user from user; 
+
+方法二：授权法
+1.>GRANT ALL PRIVILEGES ON . TO 'root'@'%' IDENTIFIED BY 'root密码' WITH GRANT OPTION; #允许root用户从任何网段通过root密码连接
+2.>FLUSH PRIVILEGES;
+
+grant all privileges on *.*  to root@192.168.*.*  identified by '123'; #允许root用户从192.168网段通过123密码登录

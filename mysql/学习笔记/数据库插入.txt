@@ -1,0 +1,5 @@
+INSERT INTO table_name ( field1, field2,...fieldN )
+                       VALUES
+                       ( value1, value2,...valueN );
+					   
+如果数据是字符型，必须使用单引号或者双引号，如："value"。
